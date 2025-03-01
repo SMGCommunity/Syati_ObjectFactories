@@ -63,6 +63,27 @@
           "ReplaceFormatData": "#include \"{2}\""
         }
       ]
+    },
+    {
+      "Name": "AreaObjMgr",
+      "CodeGenSource": "GEN_ExtAreaObjMgr.h",
+      "CodeGenDestination": "codebuild/ModuleData_ExtAreaObjMgr.h",
+      "Variables": [
+        "Name",
+        "MaxCount",
+        "Function",
+        "Include"
+      ],
+      "CodeGenData": [
+        {
+          "ReplaceTargetName": "ManagerEntryList",
+          "ReplaceFormatData": "    {{\"{0}\", {1}, {2} }},"
+        },
+        {
+          "ReplaceTargetName": "IncludeList",
+          "ReplaceFormatData": "#include \"{3}\""
+        }
+      ]
     }
   ]
 }
