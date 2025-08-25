@@ -45,6 +45,27 @@
       ]
     },
     {
+      "Name": "ModelChangableObj",
+      "CodeGenSource": "GEN_ModelChangableObj.h",
+      "CodeGenDestination": "codebuild/ModuleData_ModelChangableObj.h",
+      "Variables": [
+        "Name",
+        "ArchiveName",
+        "Function",
+        "Include"
+      ],
+      "CodeGenData": [
+        {
+          "ReplaceTargetName": "ModelChangableObjList",
+          "ReplaceFormatData": "{{ \"{0}\", {1}, {2} }},"
+        },
+        {
+          "ReplaceTargetName": "IncludeList",
+          "ReplaceFormatData": "#include \"{3}\""
+        }
+      ]
+    },
+    {
       "Name": "SceneObjHolder",
       "CodeGenSource": "GEN_SceneObjHolder.h",
       "CodeGenDestination": "codebuild/ModuleData_SceneObjHolder.h",

@@ -16,4 +16,10 @@ namespace {
         s32 mSlotId;
         NameObj* (*mCreationFunc)(void);
     };
+
+    struct ChangableObjEntry {
+        const char* mName;
+        const char* mArchiveName;
+        NameObj* (*mCreationFunc)(const char*);
+    };
 };
