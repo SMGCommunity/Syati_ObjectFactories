@@ -2,6 +2,9 @@
   "Name": "Syati Object Factories",
   "Author": "[Primary Module]",
   "Description": "Provides Object Creation factories that other modules can register to. This allows new objects to be recognized by the game.",
+  "SupportedGames": [
+    "SB4"
+  ],
 
   "ModuleExtensionDefinition": [
     {
