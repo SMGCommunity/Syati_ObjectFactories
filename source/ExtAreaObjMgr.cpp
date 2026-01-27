@@ -14,15 +14,15 @@ void ExtAreaObjManagers(AreaObjMgr* pManager, AreaObjContainer* pContainer, cons
     }
 }
 
-kmWrite32(0x80071318, 0x3860017C + cModuleCreateAreaObjMgrTableCount*4); // li r3, 0x17C + cModuleCreateAreaObjMgrTableCount*4
-kmWrite32(0x80071320, 0x3800005F + cModuleCreateAreaObjMgrTableCount); // li r0, 0x5F + cModuleCreateAreaObjMgrTableCount
+kmWrite32(0x80071318, PPC_LI(3, 0x17C + cModuleCreateAreaObjMgrTableCount*4)); // li r3, 0x17C + cModuleCreateAreaObjMgrTableCount*4
+kmWrite32(0x80071320, PPC_LI(0, 0x5F + cModuleCreateAreaObjMgrTableCount)); // li r0, 0x5F + cModuleCreateAreaObjMgrTableCount
 
-kmWrite32(0x8007136C, 0x7F24CB78); // mr r4, r25
-kmWrite32(0x80071370, 0x38A10008); // addi r5, r1, 8
-kmWrite32(0x80071374, 0x7F66DB78); // mr r6, r27
+kmWrite32(0x8007136C, PPC_MR(4, 25)); // mr r4, r25
+kmWrite32(0x80071370, PPC_ADDI(5, 1, 0x8)); // addi r5, r1, 8
+kmWrite32(0x80071374, PPC_MR(6, 27)); // mr r6, r27
 kmCall(0x80071378, ExtAreaObjManagers); // bl ExtAreaObjManagers
-kmWrite32(0x8007137C, 0x48000018); // b 0x18
+kmWrite32(0x8007137C, PPC_B(0x18)); // b 0x18
 
-kmWrite32(0x80071394, 0x3B7B0001); // addi r27, r27, 1
-kmWrite32(0x80071398, 0x2C1B005F); // cmpwi r27, 0x5F
-kmWrite32(0x8007139C, 0x3BFF000C); // addi r31, r31, 0xC
+kmWrite32(0x80071394, PPC_ADDI(27, 27, 1)); // addi r27, r27, 1
+kmWrite32(0x80071398, PPC_CMPWI(27, 0x5F)); // cmpwi r27, 0x5F
+kmWrite32(0x8007139C, PPC_ADDI(31, 31, 0xC)); // addi r31, r31, 0xC
