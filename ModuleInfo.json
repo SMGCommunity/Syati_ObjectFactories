@@ -108,6 +108,26 @@
           "ReplaceFormatData": "#include \"{3}\""
         }
       ]
+    },
+    {
+      "Name": "PostCreateFunc",
+      "CodeGenSource": "GEN_PostCreate.h",
+      "CodeGenDestination": "codebuild/ModuleData_PostCreate.h",
+      "Variables": [
+        "Name",
+        "Function",
+        "Include"
+      ],
+      "CodeGenData": [
+        {
+          "ReplaceTargetName": "PostCreateFuncList",
+          "ReplaceFormatData": "{{ \"{0}\", {1} }},"
+        },
+        {
+          "ReplaceTargetName": "IncludeList",
+          "ReplaceFormatData": "#include \"{2}\""
+        }
+      ]
     }
   ]
 }

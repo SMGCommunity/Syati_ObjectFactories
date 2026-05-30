@@ -22,4 +22,9 @@ namespace {
         const char* mArchiveName;
         NameObj* (*mCreationFunc)(const char*);
     };
+
+    struct PostCreateEntry {
+        const char* mName;
+        void (*mFunc)(const JMapInfoIter&);
+    };
 };
