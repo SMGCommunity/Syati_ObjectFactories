@@ -2,25 +2,28 @@
 #include "kamek/hooks.h"
 #include "Game/NameObj/NameObj.h"
 #include "Game/Scene/SceneObjHolder.h"
+
+#define INCLUDE_PRIVATE
 #include "ModuleData_SceneObjHolder.h"
+#undef INCLUDE_PRIVATE
 
 namespace {
-	NameObj* createSceneObj(SceneObjHolder* pHolder, s32 type) {
-		NameObj* sceneObj = pHolder->newEachObj(type);
+    NameObj* newEachObjExt(void* pUnused, int id) {
+        for (const CreateSceneObjEntry* pEntry = &cNewCreateSceneObjTable[1]; pEntry < cNewCreateSceneObjTableCount_END; pEntry++) {
+            if (pEntry->mSlotId == id) {
+                return pEntry->mCreationFunc();
+            }
+        }
 
-		if (!sceneObj) {
-			for (s32 i = 0; i < cNewCreateSceneObjTableCount; i++) {
-				const CreateSceneObjEntry e = cNewCreateSceneObjTable[i];
-
-				if (e.mSlotId == type) {
-					sceneObj = e.mCreationFunc();
-					break;
-				}
-			}
-		}
-
-		return sceneObj;
-	}
-
-	kmCall(0x804599D0, createSceneObj); // redirection hook
+        return nullptr;
+    }
 }
+
+extern kmSymbol initSceneObjHolder__5SceneFv;
+kmWrite16(&initSceneObjHolder__5SceneFv + 0x16, sizeof(SceneObjHolder) + ExtSceneObj_COUNT * sizeof(NameObj*));
+
+extern kmSymbol __ct__14SceneObjHolderFv;
+kmWrite16(&__ct__14SceneObjHolderFv + 0x2, ExtSceneObj_END);
+
+extern kmSymbol newEachObj__14SceneObjHolderFi;
+kmCall(&newEachObj__14SceneObjHolderFi + 0xEE8, newEachObjExt);
