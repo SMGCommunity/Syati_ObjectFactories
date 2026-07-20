@@ -5,7 +5,7 @@
   "SupportedGames": [
     "SB4"
   ],
-
+  "APIId": "Syati_ObjectFactories_API",
   "ModuleExtensionDefinition": [
     {
       "Name": "NameObjFactory",
