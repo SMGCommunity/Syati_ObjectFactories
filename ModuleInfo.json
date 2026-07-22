@@ -5,7 +5,7 @@
   "SupportedGames": [
     "SB4"
   ],
-  "APIId": "Syati_ObjectFactories_API",
+
   "ModuleExtensionDefinition": [
     {
       "Name": "NameObjFactory",
@@ -71,17 +71,13 @@
     {
       "Name": "SceneObjHolder",
       "CodeGenSource": "GEN_SceneObjHolder.h",
-      "CodeGenDestination": "codebuildexport/ModuleData_SceneObjHolder.h",
+      "CodeGenDestination": "codebuild/ModuleData_SceneObjHolder.h",
       "Variables": [
         "Name",
         "Function",
         "Include"
       ],
       "CodeGenData": [
-        {
-          "ReplaceTargetName": "SceneObjIdNameList",
-          "ReplaceFormatData": "{0},"
-        },
         {
           "ReplaceTargetName": "SceneObjList",
           "ReplaceFormatData": "{{ {0}, {1} }},"
